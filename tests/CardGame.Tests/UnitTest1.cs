@@ -10,18 +10,18 @@ namespace CodingChallenge.CardGame.Tests
         public void BasicTest()
         {
             //Arrange
-            //PackOfCardsCreator dealer = new PackOfCardsCreator(); // create POCcreator object to call create method
-            // PackOfCards pack = new PackOfCards(dealer.Create()); // create POC object that has access/holds a deck -- pass created deck as constructor?
+            PackOfCardsCreator dealer = new PackOfCardsCreator(); // create POCcreator object to call create method
+            PackOfCards pack = new PackOfCards(dealer.Create()); // create POC object that has access/holds a deck -- pass created deck as constructor?
 
 
             //Act
 
-            //pack.TakeCardFromTopOfPack();   
-            //pack.Shuffle();
+            pack.TakeCardFromTopOfPack();
+            pack.Shuffle();
 
             //Assert
 
-            //Debug.Assert(pack.Count == 52);
+            Debug.Assert(pack.Count == 52);
         }
 
         [Test]
