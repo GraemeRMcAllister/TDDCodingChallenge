@@ -15,11 +15,39 @@ namespace CodingChallenge.CardGame
         {
             _deck = deck;
         }
-        public int Count => throw new NotImplementedException();
+        public int Count
+        {
+            get
+            {
+                return _deck.Count;
+            }
+        }
 
-        public IEnumerator<ICard> GetEnumerator() => throw new NotImplementedException();
+        public IEnumerator<ICard> GetEnumerator()
+        {
+            return _deck.GetEnumerator();
+        }
+
         public void Shuffle() => throw new NotImplementedException();
-        public ICard TakeCardFromTopOfPack() => throw new NotImplementedException();
-        IEnumerator IEnumerable.GetEnumerator() => throw new NotImplementedException();
+
+
+        public ICard TakeCardFromTopOfPack()
+        {
+            Card card = (Card)_deck.First();
+
+            List<ICard> DeckList = _deck.ToList();
+
+            DeckList.Remove(card);
+
+            _deck = DeckList;
+
+            return card;
+        }
+
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }
