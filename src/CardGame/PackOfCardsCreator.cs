@@ -6,8 +6,23 @@ using System.Threading.Tasks;
 
 namespace CodingChallenge.CardGame
 {
-    class PackOfCardsCreator : IPackOfCardsCreator
+    public class PackOfCardsCreator : IPackOfCardsCreator
     {
-        public IPackOfCards Create() => throw new NotImplementedException();
+        public IPackOfCards Create()
+        {
+
+            List<Card> deck = new List<Card>();
+
+            foreach (Suit s in Enum.GetValues(typeof(Suit)))
+            {
+                foreach (Value v in Enum.GetValues(typeof(Value))) // 2d loop of suit and value. Ensures unique entries and matched count with enums
+                {
+                    deck.Add(new Card(s, v));
+                }
+            }
+
+            return new PackOfCards(deck);
+
+        }
     }
 }

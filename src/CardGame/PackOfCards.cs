@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace CodingChallenge.CardGame
 {
-    class PackOfCards : IPackOfCards
+    public class PackOfCards : IPackOfCards
     {
+
+        private IReadOnlyCollection<ICard> _deck;
+        public PackOfCards(IReadOnlyCollection<ICard> deck) // accepts deck in constructor Collection of <Card>
+        {
+            _deck = deck;
+        }
         public int Count => throw new NotImplementedException();
 
         public IEnumerator<ICard> GetEnumerator() => throw new NotImplementedException();

@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 
 namespace CodingChallenge.CardGame
 {
-    class Card : ICard
+    public class Card : ICard
     {
-        public Suit Suit => throw new NotImplementedException();
 
-        public Value Value => throw new NotImplementedException();
+        public Card(Suit suit, Value value)
+        {
+            Suit = suit;
+            Value = value;
+        }
+
+        public Suit Suit { get; }
+
+        public Value Value { get; }
 
         public bool Equals(ICard other) => throw new NotImplementedException();
     }
