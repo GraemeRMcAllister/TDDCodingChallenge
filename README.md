@@ -45,3 +45,16 @@ Debug.Assert(pack.Count==52);
 - The implementations should follow TDD
 - Publish your answers on a Git repo that can be reviewed & discussed during the interview
   - A commit history that shows the coding progress of coding challenge should be present
+
+
+
+
+
+
+  ROOM FOR IMPROVEMENT/DISCUSSION:
+  
+  1. Pack of cards shuffle uses the pack of cards creator class (it seems the best way to ensure shuffle has all 52 cards is to generate new collection and replace old deck) - this currently relises on the creator class but could be replaced with DI or possibly even singleton?
+
+  2. Pack of cards shuffle would also most likely be removed and added to pack of cards mutation class (i.e. dealer)
+
+  3. Pack of cards shuffle - I'm not sure on how the memory management works or how effiecient it is to create a new collection from the old one - I believe c# garbage collection should  free up space - manual deletion could maybe be used during the shiffle method

@@ -3,7 +3,7 @@ using NUnit.Framework;
 namespace CodingChallenge.ReversingString.Tests
 {
     [TestFixture]
-    public class UnitTest1
+    public class ReverseStringUnitTests
     {
         [Test]
         [TestCase("SonnyJim", "miJynnoS")]

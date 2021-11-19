@@ -6,7 +6,7 @@ using NUnit.Framework;
 namespace CodingChallenge.CardGame.Tests
 {
     [TestFixture]
-    public class UnitTest1
+    public class CardGameUnitTests
     {
         [Test]
         public void BasicTest()
@@ -29,6 +29,7 @@ namespace CodingChallenge.CardGame.Tests
         [Test]
         [TestCase(Suit.Clubs, Value.Eight, Suit.Clubs, Value.Eight)] // same card
         [TestCase(Suit.Spades, Value.Ace, Suit.Spades, Value.Ace)] // same card
+        [TestCase(0, 0, 0, 0)] 
         public void CompareCardsIsSame(Suit card1Suit, Value card1Value, Suit card2Suit, Value card2Value)
         {
             //Arrange
@@ -43,8 +44,8 @@ namespace CodingChallenge.CardGame.Tests
         }
 
         [Test]
-        [TestCase(Suit.Clubs, Value.Eight, Suit.Clubs, Value.Nine)] // Single card value different
-        [TestCase(Suit.Hearts, Value.Eight, Suit.Clubs, Value.Eight)] // Single Suit different
+        [TestCase(Suit.Clubs, Value.Eight, Suit.Clubs, Value.Nine)] // value different
+        [TestCase(Suit.Hearts, Value.Eight, Suit.Clubs, Value.Eight)] // Suit different
         [TestCase(Suit.Hearts, Value.Eight, Suit.Clubs, Value.Ten)] // Different Suit+Value
         public void CompareCardsIsDiffernt(Suit card1Suit, Value card1Value, Suit card2Suit, Value card2Value)
         {
@@ -68,7 +69,7 @@ namespace CodingChallenge.CardGame.Tests
             PackOfCardsCreator dealer = new PackOfCardsCreator();
             PackOfCards pack = new PackOfCards(dealer.Create());
 
-            Card firstCard = new Card(Suit.Clubs, Value.Ace); // first card in deck
+            Card firstCard = new Card(Suit.Clubs, Value.Ace); // always first card in deck
 
             //Act
             Card card = (Card)pack.TakeCardFromTopOfPack();
