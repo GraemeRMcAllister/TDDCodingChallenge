@@ -27,7 +27,7 @@ namespace CodingChallenge.CardGame.Tests
         }
 
         [Test]
-        [TestCase(Suit.Clubs,Value.Eight, Suit.Clubs, Value.Eight)] // same card
+        [TestCase(Suit.Clubs, Value.Eight, Suit.Clubs, Value.Eight)] // same card
         [TestCase(Suit.Spades, Value.Ace, Suit.Spades, Value.Ace)] // same card
         public void CompareCardsIsSame(Suit card1Suit, Value card1Value, Suit card2Suit, Value card2Value)
         {
@@ -65,7 +65,7 @@ namespace CodingChallenge.CardGame.Tests
         public void Remove_IsCard_DecreasesCount()
         {
             //Arrange
-            PackOfCardsCreator dealer = new PackOfCardsCreator(); 
+            PackOfCardsCreator dealer = new PackOfCardsCreator();
             PackOfCards pack = new PackOfCards(dealer.Create());
 
             Card firstCard = new Card(Suit.Clubs, Value.Ace); // first card in deck
@@ -83,8 +83,8 @@ namespace CodingChallenge.CardGame.Tests
         public void ConfirmShuffleShuffles()
         {
             //Arrange
-            PackOfCardsCreator dealer = new PackOfCardsCreator(); 
-            PackOfCards pack = new PackOfCards(dealer.Create()); 
+            PackOfCardsCreator dealer = new PackOfCardsCreator();
+            PackOfCards pack = new PackOfCards(dealer.Create());
 
 
 
@@ -103,8 +103,8 @@ namespace CodingChallenge.CardGame.Tests
         public void ConfirmShuffleShuffles_ListOfCards()
         {
             //Arrange
-            PackOfCardsCreator dealer = new PackOfCardsCreator(); 
-            PackOfCards pack = new PackOfCards(dealer.Create()); 
+            PackOfCardsCreator dealer = new PackOfCardsCreator();
+            PackOfCards pack = new PackOfCards(dealer.Create());
 
             List<Card> hand1 = new List<Card>();
             List<Card> hand2 = new List<Card>();
@@ -125,6 +125,27 @@ namespace CodingChallenge.CardGame.Tests
             Debug.Assert(!hand1.SequenceEqual(hand2)); // Enumerable.SequenceEqual Determines whether two sequences are equal by comparing the elements by using the default equality comparer for their type.
         }
 
+        [Test]
+        public void EmptyDeck_ReturnNull()
+        {
+            //Arrange
+            PackOfCardsCreator dealer = new PackOfCardsCreator();
+            PackOfCards pack = new PackOfCards(dealer.Create());
 
+
+            //Act
+            int i = 0;
+            while (i < 52){
+                pack.TakeCardFromTopOfPack();
+                i++;
+            }
+
+            Card nullCard = (Card)pack.TakeCardFromTopOfPack();
+
+
+            //Assert
+
+            Debug.Assert(nullCard is null); // Card should be null and return positive
+        }
     }
 }
