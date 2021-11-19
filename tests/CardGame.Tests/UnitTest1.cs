@@ -56,5 +56,22 @@ namespace CodingChallenge.CardGame.Tests
         }
 
 
+        [Test]
+        public void Remove_IsCard_DecreasesCount()
+        {
+            //Arrange
+            PackOfCardsCreator dealer = new PackOfCardsCreator(); // create POCcreator object to call create method
+            PackOfCards pack = new PackOfCards(dealer.Create()); // create POC object that has access/holds a deck -- pass created deck as constructor?
+            Card checkingCard = new Card(Suit.Spades, Value.Ace);
+
+            //Act
+            Card card = (Card)pack.TakeCardFromTopOfPack();
+
+
+            //Assert
+            Debug.Assert(pack.Count == 51 && card is Card && card.Equals(checkingCard));
+        }
+
+
     }
 }
