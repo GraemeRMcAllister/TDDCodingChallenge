@@ -19,6 +19,9 @@ namespace CodingChallenge.CardGame
 
         public Value Value { get; }
 
-        public bool Equals(ICard other) => throw new NotImplementedException();
+        public bool Equals(ICard other)
+        {
+            return Value == other.Value && Suit == other.Suit;
+        }
     }
 }
