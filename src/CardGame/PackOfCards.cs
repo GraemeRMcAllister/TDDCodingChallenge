@@ -51,7 +51,6 @@ namespace CodingChallenge.CardGame
             return card;
         }
 
-
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
