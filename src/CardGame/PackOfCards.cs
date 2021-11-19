@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CodingChallenge.CardGame
 {
@@ -40,15 +39,29 @@ namespace CodingChallenge.CardGame
 
         public ICard TakeCardFromTopOfPack()
         {
-            Card card = (Card)_deck.First();
+            Card card;
 
-            List<ICard> DeckList = _deck.ToList();
+            try
+            {
+                card = (Card)_deck.First();    // same functionallity in try catch to prevent any InvalidOperationException (empty sequence) 
 
-            DeckList.Remove(card);
+                List<ICard> DeckList = _deck.ToList();
 
-            _deck = DeckList;
+                DeckList.Remove(card);
+
+                _deck = DeckList;
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                Debug.WriteLine(ex.Message);
+                System.Console.WriteLine("No card in deck - returning null card");
+                card = null;
+            }
 
             return card;
+
+
         }
 
         IEnumerator IEnumerable.GetEnumerator()

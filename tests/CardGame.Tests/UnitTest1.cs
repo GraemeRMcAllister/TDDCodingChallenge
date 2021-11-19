@@ -133,19 +133,23 @@ namespace CodingChallenge.CardGame.Tests
             PackOfCards pack = new PackOfCards(dealer.Create());
 
 
+
+
             //Act
             int i = 0;
-            while (i < 52){
+            while (i < 51){
                 pack.TakeCardFromTopOfPack();
                 i++;
             }
 
+            Card nonNullCard = (Card)pack.TakeCardFromTopOfPack();
             Card nullCard = (Card)pack.TakeCardFromTopOfPack();
+            
 
 
             //Assert
 
-            Debug.Assert(nullCard is null); // Card should be null and return positive
+            Debug.Assert(nullCard is null && nonNullCard is not null); // Card should be null and return positive
         }
     }
 }
